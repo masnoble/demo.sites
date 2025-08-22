@@ -37,15 +37,27 @@
     </style>
 </head>
 <body>
-    <h1>Image Download</h1>
-    <p>Click the button below to download the image.</p>
+    <h1>Download Files</h1>
+    <p>Click the buttons below to download files.</p>
     <div>
         <a href="image.jpg" download>
             <button>Download Image</button>
         </a>
-        <a href="mailto:user@example.com">
-            <button>confirm download</button>
-        </a>
+        <button onclick="downloadAll()">Download All Text Files</button>
     </div>
+
+    <script>
+        function downloadAll() {
+            const files = ['file1.txt', 'file2.txt'];
+            files.forEach(file => {
+                const a = document.createElement('a');
+                a.href = file;
+                a.download = file;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            });
+        }
+    </script>
 </body>
 </html>
